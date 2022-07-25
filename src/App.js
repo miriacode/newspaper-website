@@ -1,7 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import './App.css';
-import { Layout } from "./Layout"
+import Layout from "./components/Layout/Layout"
+import Home from './components/Home/Home';
+import NewsDetail from './components/NewsDetail/NewsDetail';
+import Results from './components/Results/Results';
+
 
 function App() {
   return (
