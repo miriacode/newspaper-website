@@ -33,12 +33,19 @@ const newsSlice = createSlice({
             .addCase(fetchTopHeadlines.fulfilled, (state, action) =>{
                 state.status = 'succeeded'
                 const loadedNews = action.payload.data.articles
-                console.log(loadedNews)
-                //.articles
+                // const loadedNews = action.payload.data.articles.map(el=>{
+                //     const encryptedURl = el.url
+                //     el.id = encryptedURl
+                // })
+                
+
+                // Add any fetched posts to the array
+                state.news = state.news.concat(loadedNews)
             })
-            // .addCase(fetchTopHeadlines.pending, (state, action) =>{
-            //     state.status = 'loading'
-            // })
+            .addCase(fetchTopHeadlines.rejected, (state, action) => {
+                state.status = 'failed'
+                state.error = action.error.message
+            })
     }
 
 })

@@ -16,9 +16,20 @@ const Home = () => {
       // console.log(news)
     }
   }, [newsStatus,dispatch])
+
+  let content;
+    if (newsStatus === 'loading') {
+        content = <p>"Loading..."</p>;
+    } else if (newsStatus === 'succeeded') {
+        content = news.map(n => <><h3>{n.title}</h3><p>{n.description}</p></>)
+    } else if (newsStatus === 'failed') {
+        content = <p>{error}</p>;
+    }
   
   return (
-    <div>Home{newsStatus}</div>
+    <div>Home{newsStatus}
+      {content}
+    </div>
   )
 }
 
